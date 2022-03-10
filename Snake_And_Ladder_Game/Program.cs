@@ -2,45 +2,62 @@
 {
     class SnakeAndLadderGame
     {
-       public const int No_Play = 0;
        public const int Ladder_The_Player = 1;
-       public const int Snake_The_Player = 2;
+       public const int Snake_The_Player = 0;
         static void Main(string[] args)
         {
-
+            int Final_Position = 100;
             
             int Player_Position = 0;
-            Random random = new Random();
-            int DiceRoll = random.Next(0, 7);
+            int Num_DiceRoll = 0;
 
-            Random randomcase = new Random();
-            int Position = randomcase.Next(0, 3);
-            switch (Position)
+            for (Player_Position = 0; Player_Position < 100; Player_Position++)
             {
-                case No_Play:
-                    Player_Position = Player_Position;
-                    Console.WriteLine("Player No Playing:" + Player_Position);
-                    break;
+                Random random = new Random();
+                int DiceRoll = random.Next(0, 7);
 
-                case Ladder_The_Player:
-                    Player_Position += DiceRoll;
-                    Console.WriteLine("Ladder The PLayer.");
-                    Console.WriteLine("Position of Player = " + Player_Position);
-                    Console.WriteLine("DiceRoll = " + DiceRoll);
+                Random randomcase = new Random();
+                int Position = randomcase.Next(0, 2);
 
-                    break;
+                switch (Position)
+                {
 
-                case Snake_The_Player:
-                    Player_Position = Player_Position ;
-                    Console.WriteLine("Snake_The_Player.");
-                    Console.WriteLine("Position of Player = " + Player_Position);
-                    Console.WriteLine("DiceRoll = " + DiceRoll);
-                    break;
-                   
+
+
+                    case Ladder_The_Player:
+                        Num_DiceRoll += 1;
+                        if (Player_Position > 100)
+                        {
+                            Player_Position = Final_Position;
+                        }
+                        else
+                        {
+                            Player_Position += DiceRoll;
+                        }
+                        
+                        break;
+
+
+                    case Snake_The_Player:
+                        Num_DiceRoll += 1;
+                        if (Player_Position < 0)
+                        {
+                            Player_Position = Player_Position;
+                        }
+                        else
+                        {
+                            Player_Position -= Player_Position;
+
+                            
+                        }
+                        break;
+
+                }
             }
-                
-                  
-                  
+            Console.WriteLine("Number Of Time DiceRoll Throw:" + Num_DiceRoll);
+            Console.WriteLine("Position of Player = " + Player_Position);
+            Console.WriteLine("Player Reaches the Winning position..");
+
 
         }
 
