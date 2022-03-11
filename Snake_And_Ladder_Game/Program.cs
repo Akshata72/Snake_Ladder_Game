@@ -37,9 +37,10 @@
                         {
                             Player_Position += DiceRoll;
                         }
-                        
-                        break;
+                        Console.WriteLine("Position of Player:" + Player_Position);
 
+                        break;
+                      
 
                     case Snake_The_Player:
                         Num_DiceRoll += 1;
@@ -53,6 +54,8 @@
 
                             
                         }
+                        Console.WriteLine("Position of Player:" + Player_Position);
+
                         break;
 
                 }
