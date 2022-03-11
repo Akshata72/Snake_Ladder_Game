@@ -1,76 +1,162 @@
-﻿namespace SnakeAndLadderGame
+﻿using System;
+namespace SnakeAndLadder
 {
-    class SnakeAndLadderGame
+
+    class SnakeAndLadder
     {
-       public const int Ladder_The_Player = 1;
-       public const int Snake_The_Player = 0;
-       
+
+
         static void Main(string[] args)
         {
 
+            int Position_PlayerOne = 0;
+            int Position_PlayerTwo = 0;
+            int Final_Position = 100;
 
-             int Final_Position = 100;
-             int Player_Position = 0;
-             int Num_DiceRoll = 0;
-
-            for( Player_Position =0; Player_Position<=Final_Position;  Player_Position++ )
+            while (Position_PlayerOne != Final_Position && Position_PlayerTwo != Final_Position)
             {
                 Random random = new Random();
-                int DiceRoll = random.Next(0, 7);
-
-                Random randomcase = new Random();
-                int Position = randomcase.Next(0, 2);
-
-                switch (Position)
+                int RollDice_Player = random.Next(0, 7);
+                int Option_Player = random.Next(0, 3);
+                int Player_Turn = random.Next(0, 2);
+                if (Player_Turn == 0)
                 {
 
 
+                    switch (Option_Player)
+                    {
+                        case 0:
 
-                    case Ladder_The_Player:
-                        Num_DiceRoll += 1;
-                       
-                        if (Player_Position > 100)
-                        {
-                            Player_Position = Player_Position;
-                        }
-                        else
-                        {
-                            Player_Position += DiceRoll;
-                        }
-                        
-                        break;
+                            Position_PlayerOne += RollDice_Player;
+                            if (Position_PlayerOne == Final_Position)
+                            {
+                                Console.WriteLine("Player One Winn the Game.." + Position_PlayerOne);
+                            }
+                            break;
+
+                        case 1:
+                            Position_PlayerOne -= RollDice_Player;
+                            break;
+
+                        default:
+                            Position_PlayerOne = Position_PlayerOne;
+                            break;
+
+                    }
 
 
-                    case Snake_The_Player:
-                        Num_DiceRoll += 1;
-                        if (Player_Position < 0)
-                        {
-                            Player_Position = Player_Position;
-                        }
-                        else
-                        {
-                            Player_Position -= Player_Position;
-
-                            
-                        }
-                        break;
 
                 }
+
+                else
+                {
+
+                    int RollDice_PlayerTwo = random.Next(0, 7);
+                    int Option_PlayerTwo = random.Next(0, 3);
+
+
+
+                    switch (Option_PlayerTwo)
+                    {
+                        case 0:
+
+                            Position_PlayerTwo += RollDice_PlayerTwo;
+                            if (Position_PlayerTwo == Final_Position)
+                            {
+                                Console.WriteLine("Player Two Winn the Game.." + Position_PlayerTwo);
+                            }
+                            break;
+
+                        case 1:
+                            Position_PlayerTwo -= RollDice_PlayerTwo;
+                            break;
+
+                        default:
+                            Position_PlayerTwo = Position_PlayerTwo;
+                            break;
+
+                    }
+
+
+
+
+
+
+
+
+
+
+
+
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             }
-            Console.WriteLine("Number Of Time DiceRoll Throw:" + Num_DiceRoll);
-            Console.WriteLine("Position of Player = " + Final_Position);
-            Console.WriteLine("Player Gets to Exact Winning Position..");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         }
 
-
     }
-
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
